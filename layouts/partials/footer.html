@@ -1,15 +1,17 @@
 <footer id="footer">
     {{ if .Site.Social }}
-        {{ partial "social.html" . }}
+    {{ partial "social.html" . }}
     {{ end }}
     <p class="small">
-    {{ with .Site.Params.copyright }}
+        {{ with .Site.Params.copyright }}
         {{ . | markdownify }}
-    {{ else }}
-       © {{ now.Format "2006"}}. Crafted with <i class="fa fa-heart" aria-hidden="true"> </i>  by {{ .Site.Params.Author }}
-    {{ end }}
+        {{ else }}
+        © {{ now.Format "2006"}}. Crafted with <i class="fa fa-heart" aria-hidden="true"> </i> by
+        {{ .Site.Params.Author }}
+        {{ end }}
     </p>
     <p class="small">
-      This website is fully open source. Fork now via <a href="https://github.com/arhen/arhen.dev">github</a>
+        This website is fully open source. Fork now via <a
+            href="https://github.com/arhen/hugo-cereus-pro-theme">github</a>
     </p>
 </footer>
