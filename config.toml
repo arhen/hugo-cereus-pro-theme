@@ -1,5 +1,5 @@
 # Site settings
-baseurl = "http://localhost:1313/"
+baseurl = "https://cereus-pro.netlify.com/"
 languageCode = "id-ID"
 title = "Cereus Pro | Hugo Theme"
 
