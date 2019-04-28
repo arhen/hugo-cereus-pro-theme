@@ -1,0 +1,42 @@
+backend:
+  name: git-gateway
+  repo:  {{ with .Site.Params.githubRepo }}{{ . }}{{ end }} # Path to your GitHub repository
+  branch: master # Branch to update (optional; defaults to master)
+
+publish_mode: editorial_workflow # adds an interface for drafting, reviewing, and approving posts
+
+media_folder: "static/images/uploads"
+public_folder: "images/uploads"
+
+collections:
+  - label: "Pages"
+    name: "pages"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "content/about/_index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "Publish Date", name: "date", widget: "datetime"}
+          - {label: "Body", name: "body", widget: "markdown"}
+      - label: "Now Page"
+        name: "now"
+        file: "content/now/_index.md"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "Publish Date", name: "date", widget: "datetime"}
+          - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "blog"
+    label: "Blog"
+    folder: "content/blogs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown"}

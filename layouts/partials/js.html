@@ -1,0 +1,38 @@
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"
+    integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    
+<script src="{{ .Site.BaseURL }}js/main.js"></script>
+
+{{ range .Site.Params.customJS }}
+<script src="{{ $.Site.BaseURL }}{{ . }}"></script>
+{{ end }}
+
+{{ if .Site.Params.enableGoogleAnalytics }}
+  {{ template "_internal/google_analytics_async.html" . }}
+{{ end }}
+
+{{ if .Site.Params.enableBaiduAnalytics }}
+<script>
+var baiduAnalytics = '{{ .Site.Params.baiduAnalytics }}';
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?" + baiduAnalytics;
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+{{ end }}
+
+<!-- Script netlify Identity Kicking back and login -->
+<script>
+    if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+            if (!user) {
+                window.netlifyIdentity.on("login", () => {
+                    document.location.href = "/admin/";
+                });
+            }
+        });
+    }
+</script>

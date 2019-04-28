@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html {{ with .Site.LanguageCode }}lang="{{ . }}" {{ end }}>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{{ if .Site.Params.enableTwitterCard }}
+	{{ partial "twitter-cards.html" . }}
+	{{ end }}
+	{{ with .Site.Params.author }}
+	<meta name="author" content="{{ . }}">{{ end }}
+	{{ with .Site.Params.description }}
+	<meta name="description" content="{{ . }}">{{ end }}
+	{{ hugo.Generator }}
+	<title>{{ if .IsHome }}{{ .Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}</title>
+
+	<!-- performances -->
+	<link href="https://fonts.googleapis.com" rel="preconnect" crossorigin="crossorigin">
+	<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="crossorigin">
+	<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="crossorigin">
+	<link href="https://maxcdn.bootstrapcdn.com" rel="preconnect" crossorigin="crossorigin">
+	<link href="https://fonts.gstatic.com/s/notosans/v8/o-0IIpQlx3QUlC5A4PNr5TRASf6M7Q.woff2" rel="preload" as="font"
+		crossorigin="crossorigin">
+	<link href="https://fonts.gstatic.com/s/dancingscript/v10/If2RXTr6YS-zF4S-kcSWSVi_szLgiuEHiC4W.woff2" rel="preload"
+		as="font" crossorigin="crossorigin">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0"
+		rel="preload" as="font" crossorigin="crossorigin">
+
+	<link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css">
+	<!-- Deferred loading non-critical CSS -->
+	<!-- <link rel="preload" href="{{ .Site.BaseURL }}css/style.css" as="style"
+		onload="this.onload=null; this.rel='stylesheet'">
+	<noscript>
+		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/style.css"></noscript> -->
+
+
+	<!-- static -->
+	<link rel="preload" href="{{ .Site.BaseURL }}css/highlight.css" as="style"
+		onload="this.onload=null; this.rel='stylesheet'">
+	<noscript>
+		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/highlight.css"></noscript>
+	<!-- <link rel="stylesheet" href="{{ .Site.BaseURL }}css/highlight.css"> -->
+
+	{{ if eq .Site.Params.iconFont "font-awesome" }}
+	<link rel="preload" href="{{ .Site.BaseURL }}css/font-awesome.min.css" as="style"
+		onload="this.onload=null; this.rel='stylesheet'">
+	<noscript>
+		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/font-awesome.min.css"></noscript>
+	<!-- <link rel="stylesheet" href="{{ .Site.BaseURL }}css/font-awesome.min.css"> -->
+	{{ else }}
+	<link rel="preload" href="{{ .Site.BaseURL }}css/monosocialiconsfont.css" as="style"
+		onload="this.onload=null; this.rel='stylesheet'">
+	<noscript>
+		<link rel="stylesheet" href="{{ .Site.BaseURL }}css/monosocialiconsfont.css"></noscript>
+	<!-- <link rel="stylesheet" href="{{ .Site.BaseURL }}css/monosocialiconsfont.css"> -->
+	{{ end }}
+
+	{{ if .Site.Params.enableRSS }}
+	<link href="{{ .Site.RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+	{{ end }}
+
+	{{ range .Site.Params.customCSS }}
+	<link rel="preload" href="{{ $.Site.BaseURL }}{{ . }}" as="style" onload="this.onload=null; this.rel='stylesheet'">
+	<noscript>
+		<link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ . }}"></noscript>
+	<!-- <link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ . }}"> -->
+	{{ end }}
+
+	<link rel="shortcut icon" href="{{ .Site.BaseURL }}images/favicon.ico">
+	<!-- {{ with (or .Params.menu "home") }}
+	{{ if eq "about" . }} -->
+	<!-- netlify identity widget -->
+	<script async src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+	<!-- {{ end }}
+		{{ end }} -->
+
+</head>

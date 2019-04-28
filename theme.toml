@@ -1,0 +1,17 @@
+name = "Cereus Pro"
+license = "MIT"
+licenselink = "#"
+description = "Modern and Minimalist Blog Theme for Developer"
+homepage = "#"
+tags = ["blog", "beautiful", "disqus", "rss", "syntax highlighting", "tags"]
+features = ["blog", "beautiful", "disqus", "rss", "syntax highlighting", "tags"]
+min_version = 0.20
+
+[author]
+  name = "arhen"
+  homepage = "https://github.com/arhen"
+
+[original]
+  name = "nodejh"
+  homepage = "https://github.com/nodejh"
+  repo = "https://github.com/nodejh/hugo-theme-cactus-plus"
